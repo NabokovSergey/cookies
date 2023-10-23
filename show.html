@@ -23,8 +23,8 @@ accessButton.onclick = async() => {
             try{
                 await document.requestStorageAccess();
                 console.log('Доспуп разрешен');
-            } catch () {
-                console.log('Доспуп запрешен');
+            } catch (error) {
+                console.log('Доспуп запрешен', error);
             }
         }
     }
