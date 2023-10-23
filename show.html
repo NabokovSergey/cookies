@@ -12,8 +12,24 @@
     <div id="cache"></div><br>
     <br>
     <button id="showButton">Показать доступные знаения</button>
+    <br>
+    <button id="accessButton">Запросить доступ</button>
 <script>
 
+accessButton.onclick = async() => {
+    if(!!document.hasStorageAccess){
+        const hasAccess = await document.hasStorageAccess();
+        if(!hasAccess){
+            try{
+                await document.requestStorageAccess();
+                console.log('Доспуп разрешен');
+            } catch () {
+                console.log('Доспуп запрешен');
+            }
+        }
+    }
+}
+    
 showButton.onclick = async() => {
   document.querySelector('#cookies').innerHTML = `cookies: ${Cookies.get('name') || 'Нет данных'}`;
 
@@ -29,6 +45,8 @@ showButton.onclick = async() => {
       document.querySelector('#localStorage').innerHTML = `Нет доступа`;
       document.querySelector('#sessionStorage').innerHTML = `Нет доступа`;
     }
+
+    
 }
 
 </script>
