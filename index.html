@@ -11,7 +11,7 @@
 
 button.onclick = async () => {
   console.log('set value');
-  Cookies.set('name', 'value', { sameSite: 'none' });
+  Cookies.set('name', 'value', { sameSite: 'None' });
   localStorage.setItem('name', 'value');
   sessionStorage.setItem('name', 'value');
   const cache = await caches.open('cache');
