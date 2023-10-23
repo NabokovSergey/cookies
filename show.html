@@ -23,7 +23,7 @@ showButton.onclick = async() => {
   try{
       document.querySelector('#localStorage').innerHTML = `localStorage: ${localStorage.getItem('name') || 'Нет данных'}`;
       document.querySelector('#sessionStorage').innerHTML = `sessionStorage: ${sessionStorage.getItem('name') || 'Нет данных'}`;
-    }catch() {
+    } catch (error) {
       document.querySelector('#localStorage').innerHTML = `Нет доступа`;
       document.querySelector('#sessionStorage').innerHTML = `Нет доступа`;
     }
