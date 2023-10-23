@@ -20,12 +20,12 @@ accessButton.onclick = async() => {
     if(!!document.hasStorageAccess){
         const hasAccess = await document.hasStorageAccess();
         if(!hasAccess){
-            try{
-                await document.requestStorageAccess();
-                console.log('Доспуп разрешен');
-            } catch (error) {
-                console.log('Доспуп запрешен', error);
-            }
+                 document.requestStorageAccess().then(() => {
+                   console.log('Доспуп разрешен');
+                    window.location.reload();
+                }).catch(error => {
+                    console.log('Доспуп запрешен', error);
+                });
         }
     }
 }
