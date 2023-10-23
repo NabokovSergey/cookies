@@ -22,10 +22,10 @@ accessButton.onclick = async() => {
         if(!hasAccess){
                  document.requestStorageAccess().then(() => {
                    console.log('Доспуп разрешен');
-                    window.location.reload();
+                   // window.location.reload();
                 }).catch(error => {
                     console.log('Доспуп запрешен', error);
-                     window.top.location = 'https://nabokovsergey.github.io/cookies/access.html';
+                    // window.top.location = 'https://nabokovsergey.github.io/cookies/access.html';
                 });
         }
     }
