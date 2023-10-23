@@ -16,14 +16,16 @@
 
 showButton.onclick = async() => {
   document.querySelector('#cookies').innerHTML = `cookies: ${Cookies.get('name') || 'Нет данных'}`;
-  const cache = await caches.open('cache');
-  const fromCache = await cache?.match('/user');
-  const cacheVal = await fromCache?.json() || {};
-  document.querySelector('#cache').innerHTML = `cache: ${cacheVal.value || 'Нет данных'}`;
+
   try{
       document.querySelector('#localStorage').innerHTML = `localStorage: ${localStorage.getItem('name') || 'Нет данных'}`;
       document.querySelector('#sessionStorage').innerHTML = `sessionStorage: ${sessionStorage.getItem('name') || 'Нет данных'}`;
+      const cache = await caches.open('cache');
+      const fromCache = await cache?.match('/user');
+      const cacheVal = await fromCache?.json() || {};
+      document.querySelector('#cache').innerHTML = `cache: ${cacheVal.value || 'Нет данных'}`;
     } catch (error) {
+      document.querySelector('#cache').innerHTML = `Нет доступа`;
       document.querySelector('#localStorage').innerHTML = `Нет доступа`;
       document.querySelector('#sessionStorage').innerHTML = `Нет доступа`;
     }
