@@ -15,21 +15,26 @@
     <br>
     <button id="accessButton">Запросить доступ</button>
 <script>
-
-accessButton.onclick = async() => {
-    if(!!document.hasStorageAccess){
+document.addEventListener("DOMContentLoaded", (event) => {
+    console.log("DOM полностью загружен и разобран");
+     if(!!document.hasStorageAccess){
         const hasAccess = await document.hasStorageAccess();
-        if(!hasAccess){
-                 document.requestStorageAccess().then(() => {
-                   console.log('Доспуп разрешен');
+          if(!hasAccess){
+            accessButton.onclick = async() => {
+                 document.requestStorageAccess().then((result) => {
+                   console.log('Доспуп разрешен', result);
                    // window.location.reload();
                 }).catch(error => {
                     console.log('Доспуп запрешен', error);
                     // window.top.location = 'https://nabokovsergey.github.io/cookies/access.html';
                 });
+            }
         }
-    }
-}
+     }
+  });
+
+
+
     
 showButton.onclick = async() => {
   document.querySelector('#cookies').innerHTML = `cookies: ${Cookies.get('name') || 'Нет данных'}`;
