@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     console.log("DOM полностью загружен и разобран");
      if(!!document.hasStorageAccess){
         const hasAccess = await document.hasStorageAccess();
+         console.log('Доспуп к данным', hasAccess);
           if(!hasAccess){
             accessButton.onclick = async() => {
                  document.requestStorageAccess().then((result) => {
