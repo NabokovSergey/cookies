@@ -15,7 +15,7 @@
     <br>
     <button id="accessButton">Запросить доступ</button>
 <script>
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", async (event) => {
     console.log("DOM полностью загружен и разобран");
      if(!!document.hasStorageAccess){
         const hasAccess = await document.hasStorageAccess();
